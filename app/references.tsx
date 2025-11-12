@@ -49,7 +49,7 @@ export default function References() {
 
     const filteredReferences = useMemo(() => {
         return references
-          .filter(item => item.title.toLowerCase().includes(searchField.toLowerCase()))
+          .filter(item => item.autor.toLowerCase().includes(searchField.toLowerCase()))
           .sort((a, b) => a.autor.localeCompare(b.autor));
       }, [references, searchField]);
 
@@ -188,9 +188,9 @@ export default function References() {
                                             {item.title}
                                         </Text>
                                         <Text className='text-[16px] mt-2 font-roboto'>
-                                            {item.autor} {item.title}. {item.edicao !== "" && `${item.edicao} ed. `}
-                                            {item.editora !== "" && `Editora: ${item.editora}, `}{item.local !== "" && `${item.local}, `}
-                                            {item.mes !== "" && `${item.mes}. `}{item.ano !== "" && `${item.ano}. `}{item.paginas !== "" && `${item.paginas} p.`}
+                                            {item.autor} {item.title}. {item?.edicao && `${item.edicao} ed. `}
+                                            {item?.editora && `Editora: ${item.editora}, `}{item?.local && `${item.local}, `}
+                                            {item?.mes && `${item.mes}. `}{item?.ano && `${item.ano}. `}{item?.paginas && `${item.paginas} p.`}
                                         </Text>
                                     </View>
                                     <View className="flex justify-center items-center w-[12%]">
@@ -205,12 +205,12 @@ export default function References() {
                                             {item.title}
                                         </Text>
                                         <Text className='text-[16px] mt-2 font-roboto'>
-                                            {item.autor} {item.title}. {item.titlePeriodic !== "" && `${item.titlePeriodic}, `}
-                                            {item.volume !== "" && `v. ${item.volume}, `}{item.numero !== "" && `n. ${item.numero}, `}
-                                            {item.paginas !== "" && `p. ${item.paginas}, `}
-                                            {item.mes !== "" && `${item.mes}. `}{item.ano !== "" && `${item.ano}. `}
-                                            {item.doi !== "" && `DOI ${item.doi}. `}
-                                            {item.url !== "" && <>
+                                            {item.autor} {item.title}. {item?.titlePeriodic && `${item.titlePeriodic}, `}
+                                            {item?.volume && `v. ${item.volume}, `}{item?.numero && `n. ${item.numero}, `}
+                                            {item?.paginas && `p. ${item.paginas}, `}
+                                            {item?.mes && `${item.mes}. `}{item?.ano && `${item.ano}.`}
+                                            {item?.doi && ` DOI ${item.doi}. `}
+                                            {item?.url && <>
                                                 Disponivel em:{" "}
                                                 <Text onPress={() => handlePress(item.url)} 
                                                     className="text-[16px] font-roboto text-blue-600 underline">
@@ -230,10 +230,10 @@ export default function References() {
                                             {item.title}
                                         </Text>
                                         <Text className='text-[16px] mt-2 font-roboto'>
-                                            {item.instituicao !== "" && `${item.instituicao}. `}{item.title !== "" && `${item.title}. `}
-                                            {item.local !== "" && `${item.local}. `}{item.paginas !== "" && `${item.paginas} p. `}
-                                            {item.mes !== "" && `${item.mes}. `}{item.ano !== "" && `${item.ano}. `}
-                                            {item.url !== "" && <>
+                                            {item?.instituicao && `${item.instituicao}. `}{item?.title && `${item.title}. `}
+                                            {item?.local && `${item.local}. `}{item?.paginas && `${item.paginas} p. `}
+                                            {item?.mes && `${item.mes}. `}{item?.ano && `${item.ano}. `}
+                                            {item?.url && <>
                                                 Disponivel em:{" "}
                                                 <Text onPress={() => handlePress(item.url)} 
                                                     className="text-[16px] font-roboto text-blue-600 underline">
@@ -253,13 +253,13 @@ export default function References() {
                                             {item.title}
                                         </Text>
                                         <Text className='text-[16px] mt-2 font-roboto'>
-                                            {item.autor && `${item.autor} `}{item.titleCapitulo !== "" && `${item.titleCapitulo}. `}
-                                            {item.organizador !== "" && `In: ${item.organizador} `}{item.title !== "" && `${item.title}. `}
-                                            {item.edicao !== "" && `${item.edicao} ed. `}{item.local !== "" && `${item.local}: `}
-                                            {item.editora  !== ""&& `${item.editora}, `}{item.volume !== "" && `v. ${item.volume}, `}
-                                            {item.numero !== "" && `n. ${item.numero}, `}{item.paginas !== "" && `p. ${item.paginas}, `}
-                                            {item.mes !== "" && `${item.mes}. `}{item.ano !== "" && `${item.ano}. `}
-                                            {item.doi !== "" && `DOI ${item.doi}. `}{item.url !== "" && <>
+                                            {item.autor && `${item.autor} `}{item?.titleCapitulo && `${item.titleCapitulo}. `}
+                                            {item?.organizador && `In: ${item.organizador} `}{item?.title && `${item.title}. `}
+                                            {item?.edicao && `${item.edicao} ed. `}{item?.local && `${item.local}: `}
+                                            {item?.editora && `${item.editora}, `}{item?.volume && `v. ${item.volume}, `}
+                                            {item?.numero && `n. ${item.numero}, `}{item?.paginas && `p. ${item.paginas}, `}
+                                            {item?.mes && `${item.mes}. `}{item?.ano && `${item.ano}. `}
+                                            {item?.doi && ` DOI ${item.doi}. `}{item?.url && <>
                                                 Disponivel em:{" "}
                                                 <Text onPress={() => handlePress(item.url)} 
                                                     className="text-[16px] font-roboto text-blue-600 underline">

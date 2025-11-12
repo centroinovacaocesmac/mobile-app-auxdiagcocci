@@ -1,7 +1,6 @@
 {
   "expo": {
-    "owner": "geancarlossl",
-    "name": "Guia Ilustrativo da Coccidiose Aviária",
+    "name": "CoccidioseApp",
     "slug": "mobile-coccidiose-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,11 +12,12 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.roboticacesmac.mobilecoccidioseapp",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": false
     },
     "web": {
       "bundler": "metro",
@@ -41,10 +41,8 @@
       "typedRoutes": true
     },
     "extra": {
-      "extra": {
-        "eas": {
-          "projectId": "cfb82513-4521-4db9-b099-fc1b8dcca0b9"
-        }
+      "eas": {
+        "projectId": "f551b28d-0b7d-4868-834d-f9129dc0f815"
       }
     }
   }

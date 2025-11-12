@@ -25,7 +25,6 @@ export default function Score() {
     const { id, index } = useLocalSearchParams();
     const [eimeria, setEimeria] = useState<eimeriaProps|null>(null);
     const [modalVisible, setModalVisible] = useState(false);
-    const [modalRefVisible, setModalRefVisible] = useState(false);
     const [scientifNames, setScientifNames] = useState<IScientificNames[]>([]);
     const [loading, setLoading] = useState(true);
     // const [scale, setScale] = useState<number>(2);
@@ -137,35 +136,6 @@ export default function Score() {
         <>
         { eimeria ? 
             <>
-            <Modal
-                visible={modalRefVisible}          // Controla se o modal está visível
-                transparent={true}               // ESSENCIAL para permitir fundo transparente
-                animationType="fade"             // Opcional: define uma animação
-                onRequestClose={() => {
-                    setModalRefVisible(false); // Boa prática para Android (botão Voltar)
-                }}
-                >
-                {/* Esta View é o 'fundo' que cobre toda a tela */}
-                <View className="flex-1 items-center justify-center bg-black/40">
-                    
-                    {/* Esta View é o conteúdo central do modal (o cartão branco) */}
-                    <View className="bg-white rounded-[10px] p-5 w-[90%] max-w-sm">
-                    
-                    {/* Botão de Fechar */}
-                    <TouchableOpacity
-                        className="absolute p-2 right-3 top-2 z-10" // z-10 para garantir que o 'X' esteja acima de tudo
-                        onPress={() => setModalRefVisible(false)}
-                    >
-                        <Text className="font-bold">X</Text>
-                    </TouchableOpacity>
-
-                    {/* Título/Conteúdo */}
-                    <Text className="font-robotoBold text-[18px] min-w-[50%] mb-2">Referência:</Text>
-                    <Text>{eimeria?.score[Number(index)].imgRef}</Text> 
-
-                    </View>
-                </View>
-            </Modal>
             <View className="h-[100%]">
                 <View className='z-10'>
                     <View className='bg-[#FBFBFB] flex justify-center items-center pt-8 pb-4'>
@@ -187,23 +157,15 @@ export default function Score() {
                     <ScrollView className='pt-[18%]'>
 
                         {eimeria.score[Number(index)].img !== "" ?
-                            <>
                             <View className='w-[100%] px-4 mb-6'>
                                 <Image src={eimeria.score[Number(index)].img} 
                                     style={{width: "100%", height: 200, borderRadius: 14}} resizeMode="cover"/>
-
-                                <View className='absolute top-[5%] right-[5%]'>
-                                    <TouchableOpacity className="bg-white p-2 rounded-[50px]" onPress={() => setModalRefVisible(true)}>
-                                        <Image source={require('@/assets/icons/ReferecesIconBarOnSelected.png')} style={{width: 20, height: 20}} resizeMode="contain"/>
-                                    </TouchableOpacity>
-                                </View>
                                 <View className='absolute top-[80%] left-[93%]'>
                                     <TouchableOpacity onPress={() => setModalVisible(true)}>
                                         <Image source={require("@/assets/icons/Search-Circle.png")} style={{width: 30, height: 30}} resizeMode="contain"/>
                                     </TouchableOpacity>
                                 </View>
-                            </View>
-                            </>:
+                            </View>:
                             <></>
                         }
                         {/* Descrição Geral */}

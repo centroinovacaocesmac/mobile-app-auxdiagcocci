@@ -131,7 +131,7 @@ export default function Specie() {
                         </TouchableOpacity>
                     </View>
                 </View>
-                </>
+            </>
         );
     }
 

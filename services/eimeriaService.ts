@@ -6,7 +6,6 @@ export interface Iscore {
     level: number,
     img: string,
     imgPath: string,
-    imgRef: string,
     description: Array<string>
 }
 
